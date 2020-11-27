@@ -2,6 +2,6 @@
 #
 #
 #*************************************************************
-
+# block smtp connection if more then 3 unsuccessful Authentication attempts in 60 sec
 alert tcp $SMTP_SERVERS [25,465,587,2525] -> $EXTERNAL_NET any (msg:"SMTP AUTH LOGIN brute force attempt"; flow:from_server,established; content:"Authentication unsuccessful"; offset:54; nocase; detection_filter: track by_dst, count 3, seconds 60; classtype:suspicious-login; sid:1000001; rev:1; metadata:created_at 2020_11_27, updated_at 2020_11_27;)
 
