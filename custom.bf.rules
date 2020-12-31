@@ -10,4 +10,4 @@ alert tcp $SMTP_SERVERS 2525 -> $EXTERNAL_NET any (msg:"threshold SMTP AUTH LOGO
 alert tcp $SMTP_SERVERS 2525 -> $EXTERNAL_NET any (msg:"threshold alert every SMTP AUTH LOGON brute force attempt"; flow:from_server,established; content:"Authentication unsuccessful"; offset:54; nocase; threshold:type threshold, track by_dst, count 1, seconds 60; classtype:suspicious-login; sid:1000003; rev:3; metadata:created_at 2010_09_23, updated_at 2010_09_23;)
 #
 # test. alert on dnsbl record reply from server
-alert udp any 53 -> $HOME_NET any (msg:"DNS Reply with 0.0.0.0 (DNSBL record requested)"; content:"|00 01 00 01|"; content:"|00 04 00 00 00 00|"; distance:4; within:6; classtype:dns-dnsbl; sid:1000005; rev:2;)
+alert udp any 53 -> $HOME_NET any (msg:"DNS Reply with 0.0.0.0 (DNSBL record requested)"; content:"|00 01 00 01|"; content:"|00 04 00 00 00 00|"; distance:4; within:6; classtype:bad-unknown; sid:1000005; rev:3;)
