@@ -14,4 +14,4 @@ alert udp any 53 -> $HOME_NET any (msg:"DNS Reply with 0.0.0.0 (DNSBL record req
 # just test rule if IDS\IPS works. just ping and see
 alert icmp any any -> any any (msg: "TEST Rule: ICMP Packet found"; classtype:test; sid:1000006; rev:2;)
 # test disabled rule for policies test
-#alert icmp any any -> any any (msg: "disabled ICMP TEST Rule; classtype:test; sid:1000007; rev:1;)
+#alert icmp any any -> any any (msg: "disabled ICMP TEST Rule"; classtype:test; sid:1000007; rev:2;)
