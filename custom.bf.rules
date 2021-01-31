@@ -15,3 +15,5 @@ alert udp any 53 -> $HOME_NET any (msg:"DNS Reply with 0.0.0.0 (DNSBL record req
 alert icmp any any -> any any (msg: "TEST Rule: ICMP Packet found"; flow:to_server; classtype:test; sid:1000006; rev:3;)
 # test disabled rule for policies test
 #alert icmp any any -> any any (msg: "disabled ICMP TEST Rule"; classtype:test; sid:1000007; rev:2;)
+# test drop rule for policies test
+drop icmp any any -> any any (msg: "drop ICMP TEST Rule"; classtype:test; sid:1000008; rev:1;)
