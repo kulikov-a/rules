@@ -12,4 +12,4 @@ alert tcp $SMTP_SERVERS 2525 -> $EXTERNAL_NET any (msg:"threshold alert every SM
 # test. alert on dnsbl record reply from server
 alert udp any 53 -> $HOME_NET any (msg:"DNS Reply with 0.0.0.0 (DNSBL record requested)"; content:"|00 01 00 01|"; content:"|00 04 00 00 00 00|"; distance:4; within:6; classtype:bad-unknown; sid:1000005; rev:3;)
 # just test rule if IDS\IPS works. just ping and see
-alert icmp any any -> any any (msg: "TEST Rule: ICMP Packet found"; sid:1000006; rev:1;)
+alert icmp any any -> any any (msg: "TEST Rule: ICMP Packet found"; classtype:test; sid:1000006; rev:2;)
