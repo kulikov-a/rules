@@ -18,5 +18,5 @@ alert icmp any any -> any any (msg: "TEST Rule: ICMP Packet found"; flow:to_serv
 # test drop rule for policies test
 #drop icmp any any -> any any (msg: "drop ICMP TEST Rule"; classtype:test; sid:1000008; rev:1;)
 # test rules. try to catch client payload before auth error
-alert tcp any [25,465,587,2525] -> any any (msg:"Threshold smtpAU bit. SMTP AUTH LOGON brute force attempt"; flow:from_server,established; content:"Authentication unsuccessful"; offset:54; nocase; flowbits:set, smtpAU; classtype:suspicious-login; sid:1000009; rev:11; metadata:created_at 2010_09_23, updated_at 2022_07_10;)
-alert tcp any any -> any [25,465,587,2525] (msg:"Client SMTP connection"; flow:from_client,established; flowbits:isset, smtpAU; classtype:suspicious-login; sid:1000010; rev:1; metadata:created_at 2022_07_10, updated_at 2022_07_10;)
+#alert tcp any [25,465,587,2525] -> any any (msg:"Threshold smtpAU bit. SMTP AUTH LOGON brute force attempt"; flow:from_server,established; content:"Authentication unsuccessful"; offset:54; nocase; flowbits:set, smtpAU; classtype:suspicious-login; sid:1000009; rev:11; metadata:created_at 2010_09_23, updated_at 2022_07_10;)
+#alert tcp any any -> any [25,465,587,2525] (msg:"Client SMTP connection"; flow:from_client,established; flowbits:isset, smtpAU; classtype:suspicious-login; sid:1000010; rev:1; metadata:created_at 2022_07_10, updated_at 2022_07_10;)
