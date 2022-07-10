@@ -5,7 +5,7 @@
 # Custum rules to block password brute force attacks
 # block smtp connection if more then 3 unsuccessful Authentication attempts in 60 sec. testing filter vs threshold
 alert tcp $SMTP_SERVERS [25,465,587,2525] -> any any (msg:"filter SMTP AUTH LOGIN brute force attempt"; flow:from_server,established; content:"Authentication unsuccessful"; offset:54; nocase; detection_filter:track by_dst,count 3,seconds 60; classtype:suspicious-login; sid:1000001; rev:1; metadata:created_at 2020_11_27, updated_at 2020_11_27;)
-alert tcp $SMTP_SERVERS [25,465,587,2525] -> any any (msg:"threshold SMTP AUTH LOGON brute force attempt"; flow:from_client,from_server,established; content:"Authentication unsuccessful"; nocase; threshold:type threshold, track by_dst, count 3, seconds 60; classtype:suspicious-login; sid:1000002; rev:6; metadata:created_at 2010_09_23, updated_at 2022_07_10;)
+alert tcp $SMTP_SERVERS [25,465,587,2525] -> any any (msg:"threshold SMTP AUTH LOGON brute force attempt"; flow:established; content:"Authentication unsuccessful"; nocase; threshold:type threshold, track by_dst, count 3, seconds 60; classtype:suspicious-login; sid:1000002; rev:7; metadata:created_at 2010_09_23, updated_at 2022_07_10;)
 # test. alert on every auth fail
 alert tcp $SMTP_SERVERS [25,465,587,2525] -> any any (msg:"threshold alert every SMTP AUTH LOGON brute force attempt"; flow:from_server,established; content:"Authentication unsuccessful"; offset:54; nocase; threshold:type threshold, track by_dst, count 1, seconds 60; classtype:suspicious-login; sid:1000003; rev:4; metadata:created_at 2010_09_23, updated_at 2021_06_15;)
 #
