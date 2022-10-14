@@ -2,3 +2,5 @@
 0.0.0.0 something.evil.com  # should add to BL
 0.0.0.0 blah.blah/.com # should not
 0.0.0.0 _ldap._tcp.pdc._msdcs.adserver.com
+0.0.0.0 www.wps.com
+0.0.0.0 wps.com
